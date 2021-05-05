@@ -30,3 +30,17 @@
         src: /usr/src/dokuwiki/dokuwiki-stable.tgz
         dest: /usr/src/dokuwiki
         remote_src: yes
+
+    - name : get dezipped name
+      shell:
+        cmd: ls /usr/src/dokuwiki
+        register: list
+
+    - name : mv dokuwiki
+      copy:
+        src: '/usr/src/dokuwiki/{{list[0]}}'
+        dest: '/usr/src/dokuwiki/dokuwiki'
+        remote_src: yes
+        owner: vagrant
+        group: vagrant
+        mode: '0755'
