@@ -75,7 +75,7 @@
       copy:
         src: 'files/{{item}}'
         dest: '/etc/apache2/sites-available/{{item}}'
-      with_items: "{{ sites }}"
+      with_items: "{{ sites }}.conf"
         # - politique-wiki.conf
         # - recettes-wiki.conf
     
