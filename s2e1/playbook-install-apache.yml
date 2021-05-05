@@ -75,8 +75,8 @@
 
     - name : 'move politique wiki conf'
       shell:
-        cmd: mv /home/vagrant/test-ansible/s2e1/politique-wiki.conf /etc/apache2/site-available/
+        cmd: mv politique-wiki.conf /etc/apache2/site-available/
 
     - name : 'move recettes wiki conf'
       shell:
-        cmd: mv /home/vagrant/test-ansible/s2e1/recettes-wiki.conf /etc/apache2/site-available/
+        cmd: mv recettes-wiki.conf /etc/apache2/site-available/
