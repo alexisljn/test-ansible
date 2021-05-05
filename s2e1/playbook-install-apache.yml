@@ -57,13 +57,14 @@
         state: 'directory'
         mode: '0777'
 
-    - name : 'Copy dokuwiki in 2 directories'
+    - name : 'Copy dokuwiki in recette'
       shell:
-        cmd: "cp -r /usr/src/dokuwiki/dokuwiki /var/www/{{item}}"
-      with_items: 
-        - recettes.wiki
-        - politique.wiki
+        cmd: "cp -r /usr/src/dokuwiki/dokuwiki /var/www/recettes.wiki"
 
+    - name : 'Copy dokuwiki in politique'
+      shell:
+        cmd: "cp -r /usr/src/dokuwiki/dokuwiki /var/www/politiques.wiki"
+        
     - name : 'Give access'
       file:
         path: "/var/www/{{item}}"
