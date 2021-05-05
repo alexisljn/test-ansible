@@ -43,3 +43,39 @@
     - name : mv dokuwiki
       shell:
         cmd : "mv /usr/src/dokuwiki/{{list.stdout_lines[0]}} /usr/src/dokuwiki/dokuwiki"
+    
+    - name : "create folder recettes.wiki"
+      file :
+        path: '/var/www/recettes.wiki'
+        state: 'directory'
+        mode: '0755'
+
+    - name : "create folder politique.wiki"
+      file :
+        path: '/var/www/recettes.wiki'
+        state: 'directory'
+        mode: '0755'
+
+    - name : 'Copy dokuwiki in recettes.wiki'
+      copy:
+        src: '/usr/src/dokuwiki/dokuwiki'
+        dest: '/var/www/recettes.wiki'
+        owner: www-data
+        group: www-data
+        mode: '0755' 
+
+    - name : 'Copy dokuwiki in recettes.wiki'
+      copy:
+        src: '/usr/src/dokuwiki/dokuwiki'
+        dest: '/var/www/politique.wiki'
+        owner: www-data
+        group: www-data
+        mode: '0755'
+
+    - name : 'move politique wiki conf'
+      shell:
+        cmd: mv ~/test-ansible/s2e1/politique-wiki.conf /etc/apache2/site-available/
+
+    - name : 'move recettes wiki conf'
+      shell:
+        cmd: mv ~/test-ansible/s2e1/recettes-wiki.conf /etc/apache2/site-available/
