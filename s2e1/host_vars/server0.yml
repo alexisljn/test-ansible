@@ -6,6 +6,10 @@ sites:
   - recettes.wiki
   - politique.wiki
 
+conf:
+  - recettes-wiki.conf
+  - politique-wiki.conf
+
 required_packages: 
   - nmap
   - nginx
