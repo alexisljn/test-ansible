@@ -24,3 +24,9 @@
       get_url:
         url: https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz
         dest: /usr/src/dokuwiki
+    
+    - name : dezip
+      unarchive:
+        src: /usr/src/dokuwiki/dokuwiki-stable.tgz
+        dest: /usr/src/dokuwiki/dokuwiki
+        remote_src: yes
