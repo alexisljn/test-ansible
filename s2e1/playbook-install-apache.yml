@@ -28,8 +28,8 @@
       register: dezip_test
 
     - name: debug dzip
-        debug:
-          var: dezip_test
+      debug:
+        var: dezip_test
 
     - name : get dezipped name
       shell:
