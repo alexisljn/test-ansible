@@ -76,12 +76,12 @@
     - name : 'move politique wiki conf'
       copy:
         src: './politique-wiki.conf'
-        dest: '/etc/apache2/sites-available'
+        dest: '/etc/apache2/sites-available/politique-wiki.conf'
 
     - name : 'move recettes wiki conf'
       copy:
         src: './recettes-wiki.conf'
-        dest: '/etc/apache2/sites-available'
+        dest: '/etc/apache2/sites-available/recettes-wiki.conf'
     
     - name : 'Activate a2ensite'
       shell:
