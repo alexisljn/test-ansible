@@ -87,5 +87,23 @@
       shell:
         cmd: "a2ensite {{item}}"
       with_items:
-        - recettes-wiki
-        - politique-wiki 
+        - recettes.wiki
+        - politique.wiki
+    
+    - name : 'systemCtl'
+      shell:
+        cmd: "systemctl reload apache2"
+    
+    - name : 'check if DNS exists'
+      shell:
+        cmd: grep -c "^127.0.0.1" /etc/hosts
+      register: test_host
+
+    - name : 'check if DNS exists'
+      lineinfile:
+        dest: /etc/hosts
+        line: "127.0.0.1 {{item}}"
+      with_items:
+        - recettes.wiki
+        - politique.wiki
+      when: test_host == 0
