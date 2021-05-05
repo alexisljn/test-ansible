@@ -49,13 +49,13 @@
       file :
         path: '/var/www/recettes.wiki'
         state: 'directory'
-        mode: '0755'
+        mode: '0777'
 
     - name : "create folder politique.wiki"
       file :
         path: '/var/www/politique.wiki'
         state: 'directory'
-        mode: '0755'
+        mode: '0777'
 
     - name : 'Copy dokuwiki in 2 directories'
       shell:
@@ -96,6 +96,10 @@
       shell:
         cmd: grep -c "^127.0.0.1" /etc/hosts || true
       register: test_host
+
+    - name : debug test_host
+      debug: 
+        var: test_host
 
     - name : 'write new hosts'
       lineinfile:
