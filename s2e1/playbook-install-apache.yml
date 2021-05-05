@@ -59,7 +59,7 @@
 
     - name : 'Copy dokuwiki in 2 directories'
       shell:
-        cmd: "cp /usr/src/dokuwiki/dokuwiki /var/www/{{item}}"
+        cmd: "cp -r /usr/src/dokuwiki/dokuwiki /var/www/{{item}}"
       with_items: 
         - recettes.wiki
         - politique.wiki
