@@ -75,8 +75,8 @@
 
     - name : 'move politique wiki conf'
       shell:
-        cmd: mv politique-wiki.conf /etc/apache2/site-available/
+        cmd: "mv politique-wiki.conf /etc/apache2/site-available/"
 
     - name : 'move recettes wiki conf'
       shell:
-        cmd: mv recettes-wiki.conf /etc/apache2/site-available/
+        cmd: "mv recettes-wiki.conf /etc/apache2/site-available/""
