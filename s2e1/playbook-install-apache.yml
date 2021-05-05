@@ -94,7 +94,10 @@
     
     - name : 'check if DNS exists'
       shell:
-        cmd: grep -c "^127.0.0.1" /etc/hosts || true
+        cmd: grep -c "^127.0.0.1 {{item}}" /etc/hosts || true
+      with_items:
+        - recettes.wiki
+        - politique.wiki
       register: test_host
 
     - name : debug test_host
