@@ -57,23 +57,19 @@
         state: 'directory'
         mode: '0755'
 
-    - name : 'Copy dokuwiki in recettes.wiki'
-      copy:
-        src: '/usr/src/dokuwiki/dokuwiki'
-        remote_src: yes
-        dest: '/var/www/recettes.wiki'
-        owner: www-data
-        group: www-data
-        mode: '0755' 
+    - name : 'Copy dokuwiki in 2 directories'
+      shell:
+        cmd: "cp /usr/src/dokuwiki/dokuwiki /var/www/{{item}}"
+      with_items: 
+        - recettes.wiki
+        - politique.wiki
 
-    - name : 'Copy dokuwiki in recettes.wiki'
-      copy:
-        src: '/usr/src/dokuwiki/dokuwiki'
-        dest: '/var/www/politique.wiki'
-        remote_src: yes
-        owner: www-data
-        group: www-data
-        mode: '0755'
+    - name : 'Give accesss'
+      shell:
+        cmd: "chown -R www-data:www-data {{item}}"
+      with_items: 
+        - recettes.wiki/
+        - politique.wiki/
 
     - name : 'move politique wiki conf'
       shell:
