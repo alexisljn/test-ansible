@@ -64,12 +64,14 @@
         - recettes.wiki
         - politique.wiki
 
-    - name : 'Give accesss'
-      shell:
-        cmd: "chown -R www-data:www-data {{item}}"
+    - name : 'Give access'
+      file:
+        path: "/var/www/{{item}}"
+        owner: www-data
+        group: www-data
       with_items: 
-        - recettes.wiki/
-        - politique.wiki/
+        - recettes.wiki
+        - politique.wiki
 
     - name : 'move politique wiki conf'
       shell:
