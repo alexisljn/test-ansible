@@ -7,6 +7,10 @@ sites:
   - politique.wiki
 
 conf:
+  - recettes-wiki.conf
+  - politique-wiki.conf
+
+conf_folder:
   - recettes-wiki
   - politique-wiki
 
