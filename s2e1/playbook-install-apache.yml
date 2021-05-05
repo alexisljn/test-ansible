@@ -82,7 +82,7 @@
     - name : 'Activate a2ensite'
       shell:
         cmd: "a2ensite {{item.folder}}"
-      with_items: "{{ site }}"
+      with_items: "{{ sites }}"
         # - recettes-wiki
         # - politique-wiki
     
