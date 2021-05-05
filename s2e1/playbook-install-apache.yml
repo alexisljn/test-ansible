@@ -96,10 +96,10 @@
     
     - name : 'check if DNS exists'
       shell:
-        cmd: grep -c "^127.0.0.1" /etc/hosts
+        cmd: grep -c "^127.0.0.1" /etc/hosts || true
       register: test_host
 
-    - name : 'check if DNS exists'
+    - name : 'write new hosts'
       lineinfile:
         dest: /etc/hosts
         line: "127.0.0.1 {{item}}"
