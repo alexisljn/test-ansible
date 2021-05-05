@@ -63,8 +63,8 @@
 
     - name : 'Copy dokuwiki in politique'
       shell:
-        cmd: "cp -r /usr/src/dokuwiki/dokuwiki /var/www/politiques.wiki"
-        
+        cmd: "cp -r /usr/src/dokuwiki/dokuwiki /var/www/politique.wiki"
+
     - name : 'Give access'
       file:
         path: "/var/www/{{item}}"
