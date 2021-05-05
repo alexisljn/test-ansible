@@ -25,6 +25,7 @@
         src: /usr/src/dokuwiki/dokuwiki-stable.tgz
         dest: /usr/src/dokuwiki
         remote_src: yes
+        list_files: yes
       register: dezip_test
 
     - name: debug dzip
