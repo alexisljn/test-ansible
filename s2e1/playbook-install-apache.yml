@@ -53,7 +53,7 @@
 
     - name : "create folder politique.wiki"
       file :
-        path: '/var/www/recettes.wiki'
+        path: '/var/www/politique.wiki'
         state: 'directory'
         mode: '0755'
 
@@ -73,15 +73,13 @@
         - recettes.wiki
         - politique.wiki
 
-    - name : 'move politique wiki conf'
+    - name : 'move wiki conf'
       copy:
-        src: './politique-wiki.conf'
-        dest: '/etc/apache2/sites-available/politique-wiki.conf'
-
-    - name : 'move recettes wiki conf'
-      copy:
-        src: './recettes-wiki.conf'
-        dest: '/etc/apache2/sites-available/recettes-wiki.conf'
+        src: './{{item}}'
+        dest: '/etc/apache2/sites-available/{{item}}'
+      with_items:
+        - politique-wiki.conf
+        - recettes-wiki.conf
     
     - name : 'Activate a2ensite'
       shell:
