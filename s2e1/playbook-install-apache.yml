@@ -28,5 +28,5 @@
     - name : dezip
       unarchive:
         src: /usr/src/dokuwiki/dokuwiki-stable.tgz
-        dest: /usr/src/dokuwiki/dokuwiki
+        dest: /usr/src/dokuwiki
         remote_src: yes
