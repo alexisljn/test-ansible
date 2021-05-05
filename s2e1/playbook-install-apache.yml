@@ -1,11 +1,6 @@
 # Play
 - hosts: role_hosting
 
-  vars: 
-    required_packages:
-      - apache2
-      - php7.4
-
   tasks:
 
     - name : Install packages
@@ -30,6 +25,11 @@
         src: /usr/src/dokuwiki/dokuwiki-stable.tgz
         dest: /usr/src/dokuwiki
         remote_src: yes
+      register: dezip_test
+
+    - name: debug dzip
+        debug:
+          var: dezip_test
 
     - name : get dezipped name
       shell:
