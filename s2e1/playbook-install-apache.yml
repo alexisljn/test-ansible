@@ -75,14 +75,14 @@
       copy:
         src: 'files/{{item}}'
         dest: '/etc/apache2/sites-available/{{item}}'
-      with_items: "{{ conf }}.conf"
+      with_items: "{{ conf }}"
         # - politique-wiki.conf
         # - recettes-wiki.conf
     
     - name : 'Activate a2ensite'
       shell:
         cmd: "a2ensite {{item}}"
-      with_items: "{{ conf }}"
+      with_items: "{{ conf_folder }}"
         # - recettes-wiki
         # - politique-wiki
     
