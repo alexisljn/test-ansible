@@ -1,5 +1,5 @@
 # Play
-- hosts: role_hosting
+- hosts: app_hosting
 
   tasks:
 
