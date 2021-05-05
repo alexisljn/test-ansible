@@ -47,42 +47,42 @@
     
     - name : 'Create folders'
       file:
-        path: "/var/www/{{item}}"
+        path: "/var/www/{{item.url}}"
         state: directory
         mode: '0755'
-      with_items: "{{ sites.url }}"
+      with_items: "{{ sites }}"
         # - recettes.wiki
         # - politique.wiki
 
     - name : 'Copy dokuwiki in 2 directories'
       shell:
-        cmd: "cp -r /usr/src/dokuwiki/dokuwiki/. /var/www/{{item}}"
-      with_items: "{{ sites.url }}"
+        cmd: "cp -r /usr/src/dokuwiki/dokuwiki/. /var/www/{{item.url}}"
+      with_items: "{{ sites }}"
         # - recettes.wiki
         # - politique.wiki
 
     - name : 'Give access'
       file:
-        path: "/var/www/{{item}}"
+        path: "/var/www/{{item.url}}"
         recurse: yes
         owner: www-data
         group: www-data
-      with_items: "{{ sites.url }}"
+      with_items: "{{ sites }}"
         # - recettes.wiki
         # - politique.wiki
 
     - name : 'move wiki conf'
       copy:
-        src: 'files/{{item}}'
-        dest: '/etc/apache2/sites-available/{{item}}'
-      with_items: "{{ sites.conf }}"
+        src: 'files/{{item.conf}}'
+        dest: '/etc/apache2/sites-available/{{item.conf}}'
+      with_items: "{{ sites }}"
         # - politique-wiki.conf
         # - recettes-wiki.conf
     
     - name : 'Activate a2ensite'
       shell:
-        cmd: "a2ensite {{item}}"
-      with_items: "{{ site.folder }}"
+        cmd: "a2ensite {{item.folder}}"
+      with_items: "{{ site }}"
         # - recettes-wiki
         # - politique-wiki
     
@@ -92,8 +92,8 @@
     
     - name : 'check if DNS exists'
       shell:
-        cmd: "grep -c \"^127.0.0.1 {{item}}\" /etc/hosts || true"
-      with_items: "{{ sites.url }}"
+        cmd: "grep -c \"^127.0.0.1 {{item.url}}\" /etc/hosts || true"
+      with_items: "{{ sites }}"
         # - recettes.wiki
         # - politique.wiki
       register: test_host
@@ -105,8 +105,8 @@
     - name : 'write new hosts'
       lineinfile:
         dest: /etc/hosts
-        line: "127.0.0.1 {{item}}"
-      with_items: "{{ sites.url }}"
+        line: "127.0.0.1 {{item.url}}"
+      with_items: "{{ sites }}"
         # - recettes.wiki
         # - politique.wiki
       when: test_host.results[0].stdout == "0"
