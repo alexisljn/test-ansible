@@ -45,17 +45,25 @@
         cmd : "mv /usr/src/dokuwiki/{{list.stdout_lines[0]}} /usr/src/dokuwiki/dokuwiki"
         creates: /usr/src/dokuwiki/dokuwiki
     
-    - name : "create folder recettes.wiki"
-      file :
-        path: '/var/www/recettes.wiki'
-        state: 'directory'
-        mode: '0777'
+    # - name : "create folder recettes.wiki"
+    #   file :
+    #     path: '/var/www/recettes.wiki'
+    #     state: 'directory'
+    #     mode: '0777'
 
-    - name : "create folder politique.wiki"
-      file :
-        path: '/var/www/politique.wiki'
-        state: 'directory'
-        mode: '0777'
+    # - name : "create folder politique.wiki"
+    #   file :
+    #     path: '/var/www/politique.wiki'
+    #     state: 'directory'
+    #     mode: '0777'
+    - name : 'Create folders'
+      file:
+        path: "/var/www/{{item}}"
+        state: directory
+        mode: '0755'
+      with_items:
+        - recettes.wiki
+        - politique.wiki
 
     - name : 'Copy dokuwiki in 2 directories'
       shell:
