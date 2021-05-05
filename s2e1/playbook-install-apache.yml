@@ -60,6 +60,7 @@
     - name : 'Copy dokuwiki in recettes.wiki'
       copy:
         src: '/usr/src/dokuwiki/dokuwiki'
+        remote_src: yes
         dest: '/var/www/recettes.wiki'
         owner: www-data
         group: www-data
@@ -69,6 +70,7 @@
       copy:
         src: '/usr/src/dokuwiki/dokuwiki'
         dest: '/var/www/politique.wiki'
+        remote_src: yes
         owner: www-data
         group: www-data
         mode: '0755'
