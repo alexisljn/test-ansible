@@ -41,10 +41,5 @@
         var: list
 
     - name : mv dokuwiki
-      copy:
-        src: "/usr/src/dokuwiki/{{list.stdout_lines[0]}}"
-        dest: '/usr/src/dokuwiki/dokuwiki'
-        remote_src: yes
-        owner: vagrant
-        group: vagrant
-        mode: '0755'
+      shell:
+        cmd : "mv /usr/src/dokuwiki/{{list.stdout_lines[0]}} /usr/src/dokuwiki/dokuwiki"
