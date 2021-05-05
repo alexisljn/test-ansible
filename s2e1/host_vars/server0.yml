@@ -7,8 +7,8 @@ sites:
   - politique.wiki
 
 conf:
-  - recettes-wiki.conf
-  - politique-wiki.conf
+  - recettes-wiki
+  - politique-wiki
 
 required_packages: 
   - nmap
