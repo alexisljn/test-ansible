@@ -34,7 +34,7 @@
     - name : get dezipped name
       shell:
         cmd: ls /usr/src/dokuwiki
-        register: list
+      register: list
 
     - name : mv dokuwiki
       copy:
