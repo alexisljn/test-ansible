@@ -39,7 +39,6 @@
     - name : debug
       debug: 
         var: list
-        verbosity: 2
 
     - name : mv dokuwiki
       copy:
