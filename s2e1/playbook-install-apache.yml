@@ -111,4 +111,4 @@
       with_items:
         - recettes.wiki
         - politique.wiki
-      when: test_host == 0
+      when: test_host.stdout == 0
