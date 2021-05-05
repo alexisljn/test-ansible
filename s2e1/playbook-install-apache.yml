@@ -79,4 +79,4 @@
 
     - name : 'move recettes wiki conf'
       shell:
-        cmd: "mv recettes-wiki.conf /etc/apache2/site-available/""
+        cmd: "mv recettes-wiki.conf /etc/apache2/site-available/"
