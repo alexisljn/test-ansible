@@ -67,6 +67,7 @@
     - name : 'Give access'
       file:
         path: "/var/www/{{item}}"
+        recurse: yes
         owner: www-data
         group: www-data
       with_items: 
