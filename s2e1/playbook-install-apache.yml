@@ -87,8 +87,8 @@
       shell:
         cmd: "a2ensite {{item}}"
       with_items:
-        - recettes.wiki
-        - politique.wiki
+        - recettes-wiki
+        - politique-wiki
     
     - name : 'systemCtl'
       shell:
