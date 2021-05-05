@@ -36,6 +36,11 @@
         cmd: ls /usr/src/dokuwiki
       register: list
 
+    - name : debug
+      debug: 
+        var: list
+        verbosity: 2
+
     - name : mv dokuwiki
       copy:
         src: "/usr/src/dokuwiki/{{list[0]}}"
