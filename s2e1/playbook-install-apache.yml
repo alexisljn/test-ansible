@@ -31,35 +31,35 @@
       debug:
         var: dezip_test
 
-    - name : get dezipped name
-      shell:
-        cmd: ls /usr/src/dokuwiki
-      register: list
+    # - name : get dezipped name
+    #   shell:
+    #     cmd: ls /usr/src/dokuwiki
+    #   register: list
 
-    - name : debug
-      debug: 
-        var: list
+    # - name : debug
+    #   debug: 
+    #     var: list
 
     - name : mv dokuwiki
       shell:
-        cmd : "mv /usr/src/dokuwiki/{{list.stdout_lines[0]}} /usr/src/dokuwiki/dokuwiki"
-        creates: /usr/src/dokuwiki/dokuwiki/{{list.stdout_lines[0]}}
+        cmd : "mv /usr/src/dokuwiki/dokuwiki-2020-07-29 /usr/src/dokuwiki/dokuwiki"
+        creates: /usr/src/dokuwiki/dokuwiki/
     
     - name : 'Create folders'
       file:
         path: "/var/www/{{item}}"
         state: directory
         mode: '0755'
-      with_items:
-        - recettes.wiki
-        - politique.wiki
+      with_items: "{{ sites }}"
+        # - recettes.wiki
+        # - politique.wiki
 
     - name : 'Copy dokuwiki in 2 directories'
       shell:
         cmd: "cp -r /usr/src/dokuwiki/dokuwiki/. /var/www/{{item}}"
-      with_items: 
-        - recettes.wiki
-        - politique.wiki
+      with_items: "{{ sites }}"
+        # - recettes.wiki
+        # - politique.wiki
 
     - name : 'Give access'
       file:
@@ -67,24 +67,24 @@
         recurse: yes
         owner: www-data
         group: www-data
-      with_items: 
-        - recettes.wiki
-        - politique.wiki
+      with_items: "{{ sites }}"
+        # - recettes.wiki
+        # - politique.wiki
 
     - name : 'move wiki conf'
       copy:
         src: 'files/{{item}}'
         dest: '/etc/apache2/sites-available/{{item}}'
-      with_items:
-        - politique-wiki.conf
-        - recettes-wiki.conf
+      with_items: "{{ sites }}"
+        # - politique-wiki.conf
+        # - recettes-wiki.conf
     
     - name : 'Activate a2ensite'
       shell:
         cmd: "a2ensite {{item}}"
-      with_items:
-        - recettes-wiki
-        - politique-wiki
+      with_items: "{{ sites }}"
+        # - recettes-wiki
+        # - politique-wiki
     
     - name : 'systemCtl'
       shell:
@@ -93,9 +93,9 @@
     - name : 'check if DNS exists'
       shell:
         cmd: "grep -c \"^127.0.0.1 {{item}}\" /etc/hosts || true"
-      with_items:
-        - recettes.wiki
-        - politique.wiki
+      with_items: "{{ sites }}"
+        # - recettes.wiki
+        # - politique.wiki
       register: test_host
 
     - name : debug test_host
@@ -106,7 +106,7 @@
       lineinfile:
         dest: /etc/hosts
         line: "127.0.0.1 {{item}}"
-      with_items:
-        - recettes.wiki
-        - politique.wiki
+      with_items: "{{ sites }}"
+        # - recettes.wiki
+        # - politique.wiki
       when: test_host.results[0].stdout == "0"

@@ -2,6 +2,10 @@
 vim_syntax: true
 vim_yaml: false
 
+[sites]
+recettes.wiki
+politique.wiki
+
 required_packages: 
   - nmap
   - nginx
