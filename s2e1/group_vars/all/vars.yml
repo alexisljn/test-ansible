@@ -24,4 +24,4 @@ mariadb_databases:
 mariadb_users:
   - name: nextcloud
     password: nextcloud_pass
-    priv: '*.*:ALL.GRANT'
+    priv: '*.*:ALL,GRANT'
