@@ -16,12 +16,15 @@ extrauser_password:
 nextcloud_db_system: "mysql"
 nextcloud_db_host: "192.168.50.20"
 nextcloud_db_name: "nextcloud_db"
+nextcloud_custom_cert: false
+nextcloud_create_self_signed_cert: false
+
 
 mariadb_databases:
   - name: nextcloud_db
     encoding: utf8
 
 mariadb_users:
-  - name: nextcloud_3
+  - name: nextcloud_4
     password: nextcloud_pass
     priv: '*.*:ALL,GRANT'
