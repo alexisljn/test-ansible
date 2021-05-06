@@ -12,3 +12,13 @@ dokuwiki_sites:
 # ces variables sont définies dans vault.yml
 extrauser_username: 
 extrauser_password: 
+
+
+mariadb_databases:
+  - name: nextcloud_db
+    encoding: utf8
+
+mariadb_users:
+  - name: nextcloud_db
+    password: nextcloud_pass
+    priv: '*.*:ALL,GRANT'
