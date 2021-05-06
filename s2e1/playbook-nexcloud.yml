@@ -12,5 +12,5 @@
  
 - hosts: app_hosting
   roles:
-    - role: ansible-role-nextcloud
+    - role: thorian93.ansible_role_nextcloud
       become: yes
