@@ -22,6 +22,6 @@ mariadb_databases:
     encoding: utf8
 
 mariadb_users:
-  - name: nextcloud_toto
+  - name: nextcloud_tot
     password: nextcloud_pass
     priv: '*.*:ALL,GRANT'
