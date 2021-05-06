@@ -24,3 +24,7 @@ sites:
 required_packages: 
   - nmap
   - nginx
+
+  # vault.yml
+extrauser_username: 
+extrauser_password: 
