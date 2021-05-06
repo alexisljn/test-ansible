@@ -1,14 +1,12 @@
 ---
 # vim: set ts=2 sw=2 smarttab et:
 
-- hosts: app_hosting
+- hosts: roles_hosting
   pre_tasks:
     - name: install python dependencies
       apt:
         name: python3-pymysql
         state: present
-
-- hosts: db_hosting
   roles:
     - role: adfinis-sygroup.mariadb
  
